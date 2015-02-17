@@ -1,0 +1,16 @@
+#inputs
+  #selectDevices.btn-control.tooltip-trigger
+    .tooltip-right
+      .tooltip-arrow-right
+      .tooltip-inner
+        Switch camera
+    = image_tag('ic_switch_video_white_24dp.png', class: 'btn-control-icon')
+  #devicePicker
+    %a#btn-close.fa.fa-times
+    #videoInput
+      %label{for: 'videoSource'} Camera:
+      %select#videoSource
+        %option Default
+    #audioInput
+      %label{for: 'audioSource'} Microphone:
+      %select#audioSource

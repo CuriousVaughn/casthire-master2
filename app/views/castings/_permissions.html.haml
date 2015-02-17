@@ -1,0 +1,16 @@
+- if current_page?(apply_casting_path)
+  #permissions.alert-inline
+    Welcome to the interview! To begin, please do the following:
+    %ol
+      %li Enter your name above.
+      %li
+        Press
+        %strong "Allow"
+        or
+        %strong "Share"
+        at the top of this window to allow access to your camera and microphone, if you have not already done so.
+- elsif current_page?(casting_path)
+  #permissions.hero-section.text-center
+    .container
+      .highlight-box
+        Please wait while the Casting Call begins. Make sure you have allowed access to your camera and microphone.

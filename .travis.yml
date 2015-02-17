@@ -1,0 +1,21 @@
+language: ruby
+rvm:
+- 2.1.2
+before_script: bundle exec rake db:create db:migrate
+script: bundle exec rspec spec
+cache: bundler
+sudo: false
+deploy:
+  provider: heroku
+  api_key:
+    secure: "oWUXuA+PwQgzfdzOhgPEKIkOL2ilhSQvXuFAEJue1HBVY5mwlSrPjA83tqE1cvcSQyhAo2B5YDhmOTmysWkm/q2OBjrSeFTejHr9326g/NwB2pQGwLcv8Hfy/btDQdQG29PnFKSPNc9sgr2wNspWEIzS+BYlYNRK+eiWNxVhVWE="
+  app:
+    master: interviewio-staging
+    production: casthire
+  on:
+    repo: curiousminds/casthire
+  run: "rake db:migrate"
+
+addons:
+  code_climate:
+    repo_token: 1b2cb52366719fd1b023d621468c1068ec94838120b095b8678f62eb9576a442

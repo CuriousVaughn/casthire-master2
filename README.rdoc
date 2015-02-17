@@ -1,0 +1,4 @@
+To Setup for Heroku, make sure we are using pgbouncer:
+
+https://github.com/heroku/heroku-buildpack-pgbouncer
+

@@ -1,0 +1,20 @@
+%section#hero-section-desk.hero-section.text-center
+  .container
+    = form_for @user, :url => users_path, :html => { :class => 'highlight-box', :id => 'user-form' } do |f|
+      %h2 Sign Up
+      - if @user.errors.any?
+        .errors
+          %p There were problems with your registration.
+          %ul
+            - @user.errors.full_messages.each do |message|
+              %li
+                = message
+      %p
+        = f.text_field :email, placeholder: 'email'
+      %p
+        = f.password_field :password, placeholder: 'password'
+      %p
+        = f.password_field :password_confirmation, placeholder: 'confirm password'
+      = f.submit 'Sign Up', class: 'btn extra-spacing-vertical'
+      %p.text-center
+        = link_to 'Already have an account?', new_session_path

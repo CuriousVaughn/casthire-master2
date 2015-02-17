@@ -1,0 +1,7 @@
+waseem:
+  email: 'test@test.com'
+  kind: 1
+  password_digest: "$2a$10$TXj/osdHPitqdGK6PHSg8uqFItAF2.SwUf.Ke8kelajktZ6Nrkal." # tester
+  auth_token: "NilNMpOyWKioG7iQCMoDrQ"
+  confirmation_token: "2kElL1iEeCEuKtomNdI9fg"
+  confirmed_at: "2014-09-23 03:33:09"

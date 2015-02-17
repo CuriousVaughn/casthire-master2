@@ -1,0 +1,19 @@
+default: &default
+  adapter: postgresql
+  host: localhost
+  pool: 16
+
+development:
+  <<: *default
+  database: interviewio-dev
+
+# Warning: The database defined as "test" will be erased and
+# re-generated from your development database when you run "rake".
+# Do not set this db to the same as development or production.
+test:
+  <<: *default
+  database: interviewio-test
+
+production:
+  <<: *default
+  database: interviewio-prod

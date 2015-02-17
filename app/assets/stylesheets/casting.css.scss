@@ -1,0 +1,328 @@
+// Place all the styles related to the casting controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+/* Variables */
+$red: #c31b1b;
+$red-dark: #800000;
+$yellow: #fffbeb;
+$turquoise: #55d0b6;
+$turquoise-dark: #3bb399;
+$font-stack: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+
+video {
+  display: block;
+  margin: 0 auto;
+  height: 100%;
+  max-width: 100%;
+}
+
+.video-container {
+  float: left;
+  position: relative;
+}
+
+.tooltip, .tooltip-right {
+  position: absolute;
+  display: none;
+  margin: 6px 0;
+  font-size: 0.6em;
+}
+
+.tooltip {
+  right: 0;
+}
+
+.tooltip-right {
+  width: 100%;
+  left: 116%;
+}
+
+.tooltip-arrow, .tooltip-arrow-right {
+  position: absolute;
+  margin: -5px;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+}
+
+.tooltip-arrow {
+  top: 0;
+  left: 50%;
+  border-width: 0 5px 5px;
+  border-bottom-color: $turquoise;
+}
+
+.tooltip-arrow-right {
+  top: 45%;
+  left: -4px;
+  border-width: 5px;
+  border-right-color: $turquoise;
+}
+
+.tooltip-inner {
+  max-width: 200px;
+  padding: 3px 8px;
+  color: #fff;
+  text-align: center;
+  background: $turquoise;
+  text-shadow: -1px -1px 1px $turquoise-dark;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+}
+
+.alert {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 300;
+}
+
+.alert, .box-yellow {
+  background: $yellow;
+  color: #222;
+  padding: 0.5em 1em;
+}
+
+.alert-inline {
+  width: 50%;
+  max-width: 600px;
+  padding: 1em;
+  margin: 1em auto;
+}
+
+#ended {
+  color: #fff;
+}
+
+#main, #ended, #unmute, #unmuteVideo, #unsupported, #group-details {
+  display: none;
+}
+
+.notice {
+  z-index: 200;
+  position: fixed;
+  top: 0;
+  right: 1em;
+  color: #fff;
+}
+
+table {
+	width: 100%;
+}
+
+th, td {
+  padding: 1em;
+}
+
+tr:nth-child(even) td {
+  border-bottom: 1px solid #eee;
+}
+
+tr:nth-child(odd) td {
+  background: #fafafa;
+  -webkit-box-shadow: #fff 0 1px 0 inset;
+  -moz-box-shadow: #fff 0 1px 0 inset;
+  box-shadow: #fff 0 1px 0 inset;
+}
+
+td.narrow {
+  width: 40%;
+}
+
+.left-box, .right-box {
+	position: absolute;
+	top: 46px;
+	bottom: 0;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+.left-box {
+	left: 0;
+	width: 75%;
+  z-index: 100;
+  -webkit-box-shadow: 1px 1px 5px #f0f0f0;
+  -moz-box-shadow: 1px 1px 5px #f0f0f0;
+  box-shadow: 1px 1px 5px #f0f0f0;
+}
+
+.right-box {
+	right: 0;
+	width: 25%;
+  background: #fafafa;
+}
+
+.controls {
+  position: fixed;
+  z-index: 100;
+  bottom: 0;
+  left: 0;
+  top: 44px;
+  width: 50px;
+  background: rgba(242, 242, 242, 0.9);
+}
+
+.btn-control, .btn-control-off {
+  display: block;
+  margin: 4px 0;
+  display: block;
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+}
+
+.btn-control {
+  background: $turquoise;
+  &:hover {
+    background: $turquoise-dark;
+  }
+}
+
+.btn-control-off {
+  background: $red;
+  &:hover {
+    background: $red-dark;
+  }
+}
+
+.btn-control-icon {
+  margin: 0.8em;
+}
+
+#inputs {
+  position: relative;
+}
+
+#main {
+  position: absolute;
+  margin: 0 auto;
+  left: 50px;
+  right: 0;
+  top: 32px;
+}
+
+#videoBar {
+  margin: 14px 0 0 0;
+}
+
+#devicePicker {
+  display: none;
+  position: absolute;
+  z-index: 200;
+  top: 56px;
+  left: 6px;
+  font-size: 0.8em;
+  padding: 1.5em;
+  color: #fff;
+  min-width: 200px;
+  background: $turquoise;
+  text-shadow: -1px -1px 1px $turquoise-dark;
+  -webkit-box-shadow: 1px 1px 1px $turquoise-dark;
+  -moz-box-shadow: 1px 1px 1px $turquoise-dark;
+  box-shadow: 1px 1px 1px $turquoise-dark;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+}
+
+.names {
+  display: none;
+}
+
+#btn-close {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  cursor: pointer;
+}
+
+.interview-bar {
+  position: absolute;
+  padding: 0 0.5em;
+  top: 0;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  color: #fff;
+  background: #444;
+  background: rgba(0, 0, 0, 0.8);
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+}
+
+.nametag {
+  float: left;
+  font-size: 1.5em;
+}
+
+.btn-action {
+  float: right;
+}
+
+#timer {
+  position: absolute;
+  z-index: 1000;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  margin: 0 auto;
+  width: 200px;
+  background: rgba(242, 242, 242, 0.9);
+  font-size: 2em;
+  text-align: center;
+  -webkit-border-radius: 20px 20px 0 0;
+  -moz-border-radius: 20px 20px 0 0;
+  border-radius: 20px 20px 0 0;
+}
+
+.group {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #fafafa;
+  z-index: 1000;
+  padding: 0.5em 1em;
+}
+
+.group-list li {
+  border-bottom: 1px solid #eee;
+  padding: 0.5em 0;
+  position: relative;
+}
+
+.btn-remove-name {
+  position: absolute;
+  right: 0;
+  top: 0.8em;
+  cursor: pointer;
+  &:hover {
+    color: #222;
+  }
+}
+
+.group-title {
+  cursor: pointer;
+}
+
+@media only screen and (max-width: 700px) {
+  #left-box, #right-box {
+    width: 100%;
+    position: relative;
+  }
+
+  #left-box {
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+  }
+}

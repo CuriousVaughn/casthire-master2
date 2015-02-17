@@ -1,0 +1,33 @@
+= javascript_include_tag 'webrtc'
+
+= render 'unsupported'
+= render 'permissions'
+
+#share.notice
+  Casting Call is ready! Share this link:
+  .copy
+    %input#casting-link.casting-link{value: "#{apply_casting_url(@casting.id)}"}
+    %button.casting-clip.btn.btn-sm{'data-clipboard-target' => 'casting-link', :title => 'Click me to copy to clipboard.'}
+      %span.fa.fa-clipboard
+    .tooltip
+      .tooltip-arrow
+      .tooltip-inner
+        Copied!
+
+= render 'main'
+
+:javascript
+  $(document).ready(function() {
+    if (FlashDetect.installed) {
+      var clip = new ZeroClipboard($('.casting-clip'));
+      clip.on('aftercopy', function(event) {
+        // Display "Copied!" tooltip
+        $('.tooltip').css('display', 'inline-block');
+        setTimeout(function() {
+          $('.tooltip').css('display', 'none');
+        }, 1000)
+      })
+    } else {
+      $('body').append('<div class="alert">Please install and/or enable Flash to use the copy button: <a href="http://get.adobe.com/flashplayer/">Get Adobe Flash Player</a></div>')
+    }
+  });

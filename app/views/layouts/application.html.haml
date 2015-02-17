@@ -1,0 +1,44 @@
+!!!
+%html
+  %head
+    %title CastHire
+    = stylesheet_link_tag 'application', media: 'all'
+    = stylesheet_link_tag '//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css', media: 'all'
+    = include_gon
+    = @woopra_code
+    :javascript
+      woopra.config({domain: 'casthire.com'})
+    :javascript
+      woopra.track()
+    = javascript_include_tag 'application'
+    = javascript_include_tag 'https://js.pusher.com/2.0/pusher.min.js'
+    = csrf_meta_tags
+  %body
+    %nav#navigation{role: 'navigation'}
+      .container-fluid
+        .row
+          .navbar-header.col2
+            %a.navbar-brand.link-on-dark{href: '/'} CastHire
+          - if !signed_in? && @casting == nil
+            .navbar-collapse.col9.right
+              %ul.navbar-nav
+                // %li
+                //   = link_to 'Explore', new_user_path, :class => 'link-on-dark'
+                // %li
+                //   = link_to 'Pricing', new_user_path, :class => 'link-on-dark'
+                // %li
+                //   = link_to 'Try It Free', new_user_path, :class => 'link-on-dark'
+                // %li
+                //   = link_to 'Support', new_user_path, :class => 'link-on-dark'
+                %li
+                  = link_to 'Sign In', new_session_path, :class => 'link-on-dark'
+
+    %div{class: "controller_#{params[:controller].gsub("/","_")} action_#{params[:action]}"}
+      - flash.each do |name, msg|
+        %div{class: "alert alert-#{name}"}
+          = msg
+
+      = yield
+
+    - if signed_in?
+      = render 'shared/sidebar'

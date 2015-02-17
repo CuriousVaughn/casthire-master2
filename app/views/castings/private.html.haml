@@ -1,0 +1,17 @@
+= javascript_include_tag 'webrtc'
+
+= render 'unsupported'
+= render 'permissions'
+
+#interview.notice
+  You are currently in an interview room.
+  %span#interview-info
+  = link_to 'Back to the Lobby', @back_path, :class => 'btn btn-xs'
+
+#loading.hero-section.text-center
+  .container
+    .highlight-box
+      %h2 Hi there! Please sit tight while we wait for more people to join the interview.
+      = image_tag('loading.gif', class: 'loading-icon')
+
+= render 'main'

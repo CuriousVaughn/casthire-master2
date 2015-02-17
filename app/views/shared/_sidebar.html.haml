@@ -1,0 +1,10 @@
+- if current_page?(castings_path)
+  .right-box.box
+    %h4 Create a Casting Call
+    = form_for @casting, role: 'form' do |f|
+      .form-group
+        = f.text_field :name, placeholder: 'Enter Name', class: 'form-control'
+        = f.submit class: 'btn btn-center'
+
+  .corner
+    = link_to 'Sign out', session_path(1), method: :delete, :class => 'btn'

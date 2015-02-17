@@ -1,0 +1,44 @@
+%section
+  .left-box.box.box-white
+    %h2.underline-header Casting Calls
+    %table
+      %thead
+        %tr
+          %th Name
+          %th Link
+          %th.narrow Actions
+      %tbody
+        - @castings.each do |casting|
+          %tr
+            %td= casting.name
+            %td
+              .copy
+                %input.casting-link{id: "casting-link-#{casting.id}", value: "#{apply_casting_url(casting.id)}"}
+                %button.casting-clip.btn.btn-sm{id: "casting-clip-#{casting.id}", 'data-clipboard-target' => "casting-link-#{casting.id}", :title => 'Click me to copy to clipboard.'}
+                  %span.fa.fa-clipboard
+                .tooltip{id: "tooltip-#{casting.id}"}
+                  .tooltip-arrow
+                  .tooltip-inner
+                    Copied!
+            %td.narrow
+              = link_to casting_path(casting), class: 'btn' do
+                %span.fa.fa-video-camera
+                Start Casting Call
+              = link_to casting_path(casting), method: :delete, data: { confirm: 'Are you sure you want to delete this casting?' }, class: 'btn btn-danger' do
+                %span.fa.fa-times
+                Delete Casting
+              :javascript
+                $(document).ready(function() {
+                  if (FlashDetect.installed) {
+                    var clip = new ZeroClipboard($('#casting-clip-#{casting.id}'));
+                    clip.on('aftercopy', function(event) {
+                      // Display "Copied!" tooltip
+                      $('#tooltip-#{casting.id}').css('display', 'inline-block');
+                      setTimeout(function() {
+                        $('#tooltip-#{casting.id}').css('display', 'none');
+                      }, 1000)
+                    })
+                  } else {
+                    $('body').append('<div class="alert">Please install and/or enable Flash to use the copy button: <a href="http://get.adobe.com/flashplayer/">Get Adobe Flash Player</a></div>')
+                  }
+                });

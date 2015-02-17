@@ -1,0 +1,39 @@
+#controls.controls
+  %a#mute.btn-control.tooltip-trigger
+    .tooltip-right
+      .tooltip-arrow-right
+      .tooltip-inner
+        Mute
+    = image_tag('ic_mic_none_white_24dp.png', class: 'btn-control-icon')
+  %a#unmute.btn-control-off.tooltip-trigger
+    .tooltip-right
+      .tooltip-arrow-right
+      .tooltip-inner
+        Unmute
+    = image_tag('ic_mic_off_white_24dp.png', class: 'btn-control-icon')
+  %a#muteVideo.btn-control.tooltip-trigger
+    .tooltip-right
+      .tooltip-arrow-right
+      .tooltip-inner
+        Turn off video
+    = image_tag('ic_videocam_white_24dp.png', class: 'btn-control-icon')
+  %a#unmuteVideo.btn-control-off.tooltip-trigger
+    .tooltip-right
+      .tooltip-arrow-right
+      .tooltip-inner
+        Turn on video
+    = image_tag('ic_videocam_off_white_24dp.png', class: 'btn-control-icon')
+  = render 'inputs'
+
+#main
+  #videoBar
+    #local
+      .video-container.clearfix
+        %video#localVideo
+    #remoteVideos
+  .names
+
+#timer
+
+- if signed_in? && current_page?(casting_path)
+  = render 'group'
